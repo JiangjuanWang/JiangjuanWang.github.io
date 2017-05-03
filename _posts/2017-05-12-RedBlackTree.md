@@ -14,8 +14,8 @@ title: RedBlackTree
 > (5)对每个节点，从该节点到其所有后代叶节点的简单路径上，均包含相同数目的黑色节点。<br>
 
 #2.红黑树的分析#
->首先对红黑树中的节点进行定义，节点的属性应该包含节点的值，颜色，左孩子，右孩子和父节点<br>
->节点的定义：<br>
+首先对红黑树中的节点进行定义，节点的属性应该包含节点的值，颜色，左孩子，右孩子和父节点<br>
+节点的定义：<br>
 
 ```Java
 class Node<T>{
@@ -77,6 +77,7 @@ private Node<Integer> root;
 ```
 
 >红黑树：同二叉搜索树的插入一样，先按大小插入待插入的节点<br>
+
 ```Java
 public void insert(Integer key){
     Node<Integer> node=new Node<Integer>(key,'r',null,null,null);
@@ -122,6 +123,7 @@ public void insert(Integer key){
 ![](process2.png)
 
 >####待插入节点的父节点是左孩子####<br>
+
 ```Java
 if(node.getParent()!=null && node.getParent().getParent()!=null&& node.getParent()==node.getParent().getParent().getLeft()){
         uncle=node.getParent().getParent().getRight();
@@ -144,6 +146,7 @@ if(node.getParent()!=null && node.getParent().getParent()!=null&& node.getParent
 ```
 
 >####待插入节点的父节点是右孩子####<br>
+
 ```Java
 else{
         uncle=node.getParent().getParent().getLeft();
@@ -167,6 +170,7 @@ else{
 ```
 
 >####调整实现的具体代码####<br>
+
 ```Java
 public void insertFixUp(Node<Integer> node){
     Node<Integer> par,gpar,uncle;
@@ -213,8 +217,8 @@ public void insertFixUp(Node<Integer> node){
 ```
 
 #3.红黑树的代码实现#
-
 >实现<br>
+
 ```Java
 import java.util.Stack;
 class Node<T>{
@@ -407,9 +411,9 @@ class RedBlackTree<T>{
 ```
 
 >测试<br>
+
 ```Java
 public class TestRedBlackTree {
-  
   public static void main(String[] args) {
     // TODO Auto-generated method stub
     RedBlackTree<Integer> rbt=new RedBlackTree<Integer>();
