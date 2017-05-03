@@ -377,63 +377,6 @@ class RedBlackTree<T>{
     node.setParent(tempnode);
   }
   
-  //
-  /*public boolean rbDeleteTree(Integer data){
-    Node<Integer> currentNode=(Node<Integer>) root;
-    Node<Integer> parcurrentNode=null;
-    boolean isLeftChild=true;
-    while(currentNode!=null&&currentNode.getKey()!=data){
-      parcurrentNode=currentNode;
-      if(data<currentNode.getKey()){
-        currentNode=currentNode.getLeft();
-        isLeftChild=true;
-      }
-      else{
-        currentNode=currentNode.getRight();
-        isLeftChild=false;
-      }
-    }
-    if(currentNode==null)
-      return false;
-    Node<Integer> tempnode;
-    Node<Integer> temp=null;
-    tempnode=currentNode;
-    char y_original_color=tempnode.getColor();
-    if(currentNode.getLeft()==null){
-      temp=currentNode.getRight();
-      RBTransplant(currentNode,temp);
-    }
-    else if(currentNode.getRight()==null){
-      temp=currentNode.getLeft();
-      RBTransplant(currentNode,temp);
-    }
-    else{
-      tempnode=treeMinimum(currentNode.getRight());
-      y_original_color=tempnode.getColor();
-      temp=tempnode.getRight();
-      if(tempnode.getParent()==currentNode)
-        temp.setParent(tempnode);
-      else{
-        RBTransplant(tempnode,temp);
-        tempnode.setRight(currentNode.getRight());
-        tempnode.getRight().setParent(tempnode);
-      }
-      RBTransplant(currentNode,tempnode);
-      tempnode.setLeft(currentNode.getLeft());
-      tempnode.getLeft().setParent(currentNode);
-      tempnode.setColor(currentNode.getColor());
-    }
-    if(y_original_color=='b')
-      //RBDeleteFixUp();
-    return true;
-    
-  }
-  //
-  public void RBTransplant(Node<Integer> u,Node<Integer> v){}
-  public Node<Integer> treeMinimum(Node<Integer> node){
-    Node<Integer> minNode=null;
-    return minNode;
-  }*/
   public void preOrder(){
     //this.root=preOrder(root);
     preOrder(root);
