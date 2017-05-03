@@ -14,8 +14,8 @@ title: RedBlackTree
 > (5)对每个节点，从该节点到其所有后代叶节点的简单路径上，均包含相同数目的黑色节点。<br>
 
 #2.红黑树的分析#
-##首先对红黑树中的节点进行定义，节点的属性应该包含节点的值，颜色，左孩子，右孩子和父节点##
-##节点的定义：##
+>##首先对红黑树中的节点进行定义，节点的属性应该包含节点的值，颜色，左孩子，右孩子和父节点##
+>##节点的定义：##
 ```Java
 class Node<T>{
   private T key;//值
@@ -64,8 +64,8 @@ class Node<T>{
 }
 ```
 
-##然后实现红黑树，通过一个节点一个节点插入的方式来构建红黑树##
-###红黑树定义：包括根节点和构造函数###
+>##然后实现红黑树，通过一个节点一个节点插入的方式来构建红黑树##
+>###红黑树定义：包括根节点和构造函数###
 ```Java
 private Node<Integer> root;
   RedBlackTree(){}
@@ -73,7 +73,7 @@ private Node<Integer> root;
     this.root=(Node<Integer>) root;
   }
 ```
-###红黑树：同二叉搜索树的插入一样，先按大小插入待插入的节点###
+>###红黑树：同二叉搜索树的插入一样，先按大小插入待插入的节点###
 ```Java
 public void insert(Integer key){
     Node<Integer> node=new Node<Integer>(key,'r',null,null,null);
@@ -109,15 +109,16 @@ public void insert(Integer key){
     insertFixUp(z);//调整
   }
 ```
-###插入待插入节点后，可能会破坏红黑树的性质，所以用insertFixUp(z)函数对此树进行调整，以确保其是红黑树###
-####为保证红黑树的性质，所以待插入的节点插入后设置的颜色为红色，所以当插入节点后，需要调整的条件是插入节点的父节点也是红色，这样就违反了性质4，所以需要调整####
-####在插入节点的父节点是红色的条件下，具体的调整分为以下情况：####
+>插入待插入节点后，可能会破坏红黑树的性质，所以用insertFixUp(z)函数对此树进行调整，以确保其是红黑树###
+>为保证红黑树的性质，所以待插入的节点插入后设置的颜色为红色，所以当插入节点后，需要调整的条件是插入节点的父节点也是红色，这样就违反了性质4，所以需要调整
+>在插入节点的父节点是红色的条件下，具体的调整分为以下情况：
 ![](redblacktree.png)
 >.红黑树的实例分析
 >###将关键字41、38、31、12、19、8连续地插入一颗初始为空的红黑树###
 ![](process1.png)
 ![](process2.png)
-####待插入节点的父节点是左孩子####
+
+>####待插入节点的父节点是左孩子####
 ```Java
 if(node.getParent()!=null && node.getParent().getParent()!=null&& node.getParent()==node.getParent().getParent().getLeft()){
         uncle=node.getParent().getParent().getRight();
