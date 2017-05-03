@@ -3,7 +3,7 @@ layout: post
 title: RedBlackTree
 ---
 
-红黑树（参考《算法导论》
+红黑树（参考《算法导论》）
 ==============
 
 #1.红黑树的性质：#
@@ -14,8 +14,8 @@ title: RedBlackTree
 > (5)对每个节点，从该节点到其所有后代叶节点的简单路径上，均包含相同数目的黑色节点。<br>
 
 #2.红黑树的分析#
->##首先对红黑树中的节点进行定义，节点的属性应该包含节点的值，颜色，左孩子，右孩子和父节点##<br>
->##节点的定义：##<br>
+>首先对红黑树中的节点进行定义，节点的属性应该包含节点的值，颜色，左孩子，右孩子和父节点<br>
+>节点的定义：<br>
 ```Java
 class Node<T>{
   private T key;//值
@@ -64,16 +64,17 @@ class Node<T>{
 }
 ```
 
->##然后实现红黑树，通过一个节点一个节点插入的方式来构建红黑树##<br>
->###红黑树定义：包括根节点和构造函数###<br>
+>然后实现红黑树，通过一个节点一个节点插入的方式来构建红黑树<br>
+>红黑树定义：包括根节点和构造函数<br>
 ```Java
 private Node<Integer> root;
   RedBlackTree(){}
   RedBlackTree(Node<T> root){
     this.root=(Node<Integer>) root;
-  }
+}
 ```
->###红黑树：同二叉搜索树的插入一样，先按大小插入待插入的节点###
+
+>红黑树：同二叉搜索树的插入一样，先按大小插入待插入的节点<br>
 ```Java
 public void insert(Integer key){
     Node<Integer> node=new Node<Integer>(key,'r',null,null,null);
@@ -139,7 +140,7 @@ if(node.getParent()!=null && node.getParent().getParent()!=null&& node.getParent
         }
       }
 ```
-####待插入节点的父节点是右孩子####
+>####待插入节点的父节点是右孩子####<br>
 ```Java
 else{
         uncle=node.getParent().getParent().getLeft();
@@ -161,7 +162,8 @@ else{
         
     }
 ```
-####调整实现的具体代码####
+
+>####调整实现的具体代码####<br>
 ```Java
 public void insertFixUp(Node<Integer> node){
     Node<Integer> par,gpar,uncle;
@@ -207,10 +209,10 @@ public void insertFixUp(Node<Integer> node){
     root.setColor('b');
   }
 ```
+
 >3.红黑树的代码实现<br>
 ```Java
 import java.util.Stack;
-
 class Node<T>{
   private T key;//值
   private char color;//颜色
@@ -279,12 +281,9 @@ class RedBlackTree<T>{
         node=node.getRight();
     }
     z.setParent(parnode); 
-    //System.out.println(111);
     if(parnode!=null&&z.getKey()<parnode.getKey()){
-      //System.out.println(parnode.getKey());
         parnode.setLeft(z);
         z.setParent(parnode);
-      
     }
     else if(parnode!=null&&z.getKey()>parnode.getKey()){
         parnode.setRight(z);
@@ -295,6 +294,7 @@ class RedBlackTree<T>{
     }
       insertFixUp(z);
   }
+
   public void insertFixUp(Node<Integer> node){
     Node<Integer> par,gpar,uncle;
     while(node.getParent()!=null && node.getParent().getColor()=='r'){
@@ -377,9 +377,7 @@ class RedBlackTree<T>{
     tempnode.setRight(node);
     node.setParent(tempnode);
   }
-  
   public void preOrder(){
-    //this.root=preOrder(root);
     preOrder(root);
   }
   public void preOrder(Node<Integer> node){
@@ -388,8 +386,6 @@ class RedBlackTree<T>{
       preOrder(node.getLeft());
       preOrder(node.getRight());
     }
-    
-    //return node;
   }
   public void nrinOrder(){
     Stack stack =  new Stack();
