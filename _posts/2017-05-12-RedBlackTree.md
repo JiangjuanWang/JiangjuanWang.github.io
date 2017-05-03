@@ -16,8 +16,8 @@ title: RedBlackTree
 #2.红黑树的分析#
 >首先对红黑树中的节点进行定义，节点的属性应该包含节点的值，颜色，左孩子，右孩子和父节点<br>
 >节点的定义：<br>
-```Java
 
+```Java
 class Node<T>{
   private T key;//值
   private char color;//颜色
@@ -63,24 +63,21 @@ class Node<T>{
     this.parent=parent;
   }
 }
-
 ```
 
 >然后实现红黑树，通过一个节点一个节点插入的方式来构建红黑树<br>
 >红黑树定义：包括根节点和构造函数<br>
-```Java
 
+```Java
 private Node<Integer> root;
   RedBlackTree(){}
   RedBlackTree(Node<T> root){
     this.root=(Node<Integer>) root;
 }
-
 ```
 
 >红黑树：同二叉搜索树的插入一样，先按大小插入待插入的节点<br>
 ```Java
-
 public void insert(Integer key){
     Node<Integer> node=new Node<Integer>(key,'r',null,null,null);
     if(node!=null){
@@ -113,7 +110,6 @@ public void insert(Integer key){
     }
     insertFixUp(z);//调整
   }
-
 ```
 
 >插入待插入节点后，可能会破坏红黑树的性质，所以用insertFixUp(z)函数对此树进行调整，以确保其是红黑树###<br>
@@ -146,9 +142,9 @@ if(node.getParent()!=null && node.getParent().getParent()!=null&& node.getParent
         }
       }
 ```
+
 >####待插入节点的父节点是右孩子####<br>
 ```Java
-
 else{
         uncle=node.getParent().getParent().getLeft();
         if(uncle.getColor()=='r' && uncle!=null){
@@ -217,6 +213,7 @@ public void insertFixUp(Node<Integer> node){
 ```
 
 #3.红黑树的代码实现#
+
 >实现<br>
 ```Java
 import java.util.Stack;
